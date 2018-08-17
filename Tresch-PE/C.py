@@ -73,6 +73,9 @@ class Agent(object):
         k = eq[1]
         l = eq[2]
         return (k**(self.a_k+self.PE)*l**self.a_l)
+    '''
+    Solve for the Pareto optimum.
+    '''
     def Equi(self):
     
     '''
@@ -80,8 +83,10 @@ class Agent(object):
     '''
     def Sys_PE(self, x):
         g, k, l, L = x
-        return ((0.5*(g**1.1))**(1.2/1.1)-(0.6*(k**1.9)+\
-                0.4*(l**1.9))/1.9+L*(g-k**(0.3+PE)*l**0.7))
+        return ((1-self.a)*(0.5*(g**2)**(self.g))**((1-self.a-self.g)/self.g)*(g**2)**(self.g-1)+L,\
+                -self.c_k*(k**2)**(self.t-1)-L*(self.a_k+self/PE)*(k**2)**(self.a_k+self.PE-1)*(l**2)**self.a_l,\
+                -self.c_l*(l**2)**(self.t-1)-L*self.a_l*(l**2)**(self.a_l-1)*(k**2)**(self.a_k+self.PE),\
+                g**2-(k**2)**(self.a_k+self.PE)*(l**2)**self.a_l)
     '''
     Sys defines FOCs for individual who cannot observe the production
     externality when making his/her decision.
