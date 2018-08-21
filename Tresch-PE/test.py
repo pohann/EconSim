@@ -7,6 +7,7 @@ Created on Sat Aug 18 20:18:24 2018
 
 from __init__ import Tres
 
-t = Tres(PE=0.2)
-t.Equi()
-t.Comp()
+t = Tres(PE=0)
+t.equi()
+#t.e()
+#6t.Comp()
