@@ -1,2 +1,4 @@
 # EconSim
-this is a project
+
+For more details of the theoretical framework, pleas refer to Model.pdf.
+
