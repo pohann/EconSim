@@ -28,6 +28,7 @@ from scipy.optimize import fsolve
 from SOE import SOE
 from Agent import Agent
 import random
+import datetime
 
 class Tres(object):
     '''
@@ -60,6 +61,7 @@ class Tres(object):
     
     '''
     def e(self):
+        random.seed(datetime.datetime.now())
         sys = SOE(g = self.g, a = self.a, t = self.t, c_k = self.c_k, c_l = self.c_l,\
                   a_k = self.a_k, a_l = self.a_l, PE = self.PE)
         a = Agent(g = self.g, a = self.a, t = self.t, c_k = self.c_k, c_l = self.c_l,\
@@ -76,8 +78,10 @@ class Tres(object):
         ans[0] = a.Prod(ans)
 
         for i in range(100):
+            random.seed(datetime.datetime.now())
             x =  fsolve(sys.KL, ((random.uniform(1,5),)*2))
             while x[0]<=1e-2 or x[1]<=1e-2:
+                random.seed(datetime.datetime.now())
                 x =  fsolve(sys.KL, ((random.uniform(1,5),)*2))
             y = np.array([])
             for b in range(2):
@@ -92,12 +96,14 @@ class Tres(object):
         print a.Util(ans)
         
     def equi(self):
+        random.seed(datetime.datetime.now())
         sys = SOE(g = self.g, a = self.a, t = self.t, c_k = self.c_k, c_l = self.c_l,\
                   a_k = self.a_k, a_l = self.a_l, PE = self.PE)
         a = Agent(g = self.g, a = self.a, t = self.t, c_k = self.c_k, c_l = self.c_l,\
                   a_k = self.a_k, a_l = self.a_l, PE = self.PE)
         x =  fsolve(sys.KL, ((random.uniform(1,5),)*2))
         while x[0]<=1e-2:
+            random.seed(datetime.datetime.now())
             x =  fsolve(sys.KL, ((random.uniform(1,5),)*2))
         y = np.array([])
         for b in range(2):
@@ -111,8 +117,10 @@ class Tres(object):
         test[0] = a.Prod(test)
         
         while a.Util(ans) < a.Util(test):
+            random.seed(datetime.datetime.now())
             x =  fsolve(sys.KL, ((random.uniform(1,5),)*2))
             while x[0]<=1e-2:
+                random.seed(datetime.datetime.now())
                 x =  fsolve(sys.KL, ((random.uniform(1,5),)*2))
             y = np.array([])
             for b in range(2):
