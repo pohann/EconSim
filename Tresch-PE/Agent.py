@@ -9,19 +9,19 @@ import numpy as np
 class Agent(object):
     def __init__(self, g = 1.1, a = -0.5, t = 2.1, c_k = 0.5, c_l = 0.5,\
                  a_k = 0.7, a_l = 0.7, PE = 0, ):
-        self.g = g
-        self.a = a
-        self.t = t
-        self.c_k = c_k
-        self.c_l = c_l
-        self.a_k = a_k
-        self.a_l = a_l
+        self.g = float(g)
+        self.a = float(a)
+        self.t = float(t)
+        self.c_k = float(c_k)
+        self.c_l = float(c_l)
+        self.a_k = float(a_k)
+        self.a_l = float(a_l)
         if PE == 0:
-            self.PE = PE
+            self.PE = float(PE)
         elif PE > 0:
-            self.PE = 0.05
+            self.PE = float(0.01)
         else:
-            self.PE = -0.05
+            self.PE = float(-0.01)
         '''
     Define the utility function.
     The output_lst consists of three arguments: g, k and l.
