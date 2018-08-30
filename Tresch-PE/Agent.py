@@ -30,10 +30,10 @@ class Agent(object):
     l: number of labor supplied
     '''
     def Util(self, eq):
-        x1 = eq[0]
+        x_1 = eq[0]
         k = eq[1]
         l = eq[2]
-        utility = (0.5*x1**self.g)**((1-self.a)/self.g)-(self.c_k*(k**self.t)+\
+        utility = (0.5*x_1**self.g)**((1-self.a)/self.g)-(self.c_k*(k**self.t)+\
                    self.c_l*(l**self.t))/self.t
         return utility
     '''
@@ -43,3 +43,7 @@ class Agent(object):
         k = eq[1]
         l = eq[2]
         return (k**(self.a_k+self.PE)*l**self.a_l)
+    def IU(self, eq):
+        k = eq[1]
+        l = eq[2]
+        return(1000*((0.5*k**((self.a_k+self.PE)*self.g)*l**(self.a_l*self.g))**((1-self.a)/self.g)-(self.c_k*k**self.t+self.c_l*l**self.t)/self.t))

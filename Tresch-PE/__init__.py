@@ -80,8 +80,8 @@ class Tres(object):
         for i in range(10):
             random.seed(datetime.datetime.now())
             x =  fsolve(sys.KL_PE, ((random.uniform(1,5),)*2))
-            while x[0]<=1e-2 or x[1]<=1e-2:
-                
+            while x[0]< 1e-2 or x[1]< 1e-2:
+                random.seed(datetime.datetime.now())
                 x =  fsolve(sys.KL_PE, ((random.uniform(1,5),)*2))
             y = np.array([])
             for b in range(2):
@@ -94,6 +94,7 @@ class Tres(object):
                 ans = comp
         print ans    
         print a.Util(ans)
+        print a.IU(ans)
     # a function to test wether equi found an maximum   
     def ckeck(self):
         random.seed(datetime.datetime.now())
@@ -159,7 +160,7 @@ class Tres(object):
         ans[2] = y[1]
         ans[0] = a.Prod(ans)
 
-        for i in range(10):
+        for i in range(50):
             random.seed(datetime.datetime.now())
             x =  fsolve(sys.KL, ((random.uniform(1,5),)*2))
             while x[0]<=1e-2 or x[1]<=1e-2:
@@ -176,6 +177,7 @@ class Tres(object):
                 ans = comp
         print ans        
         print a.Util(ans)
+        print a.IU(ans)
     '''
     Pig is a callable function that returns
     1.
