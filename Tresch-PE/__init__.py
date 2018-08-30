@@ -41,7 +41,7 @@ class Tres(object):
     existence and uniqueness of solution, please carefully check for the 
     concavity of the objective function.
     '''
-    def __init__(self, g = 1.1, a = -0.7, t = 2.1, c_k = 0.5, c_l = 0.5,\
+    def __init__(self, g = 1.1, a = -0.7, t = 2.1, c_k = 0.4, c_l = 0.6,\
                  a_k = 0.3, a_l = 0.5, PE = 0, ):
         self.g = float(g)
         self.a = float(a)
@@ -53,9 +53,9 @@ class Tres(object):
         if PE == 0:
             self.PE = float(PE)
         elif PE > 0:
-            self.PE = float(0.01)
+            self.PE = float(0.02)
         else:
-            self.PE = float(-0.01)
+            self.PE = float(-0.02)
     '''
     Solve for the Pareto optimum.
     
@@ -90,6 +90,7 @@ class Tres(object):
             comp[1] = y[0]
             comp[2] = y[1]
             comp[0] = a.Prod(comp)
+            print a.IU(comp)
             if a.Util(ans) < a.Util(comp):
                 ans = comp
         print ans    
@@ -160,7 +161,7 @@ class Tres(object):
         ans[2] = y[1]
         ans[0] = a.Prod(ans)
 
-        for i in range(50):
+        for i in range(10):
             random.seed(datetime.datetime.now())
             x =  fsolve(sys.KL, ((random.uniform(1,5),)*2))
             while x[0]<=1e-2 or x[1]<=1e-2:
@@ -173,6 +174,7 @@ class Tres(object):
             comp[1] = y[0]
             comp[2] = y[1]
             comp[0] = a.Prod(comp)
+            print a.IU(comp)
             if a.Util(ans) < a.Util(comp):
                 ans = comp
         print ans        

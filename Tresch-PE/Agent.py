@@ -7,7 +7,7 @@ Created on Sat Aug 18 18:31:55 2018
 import numpy as np
 
 class Agent(object):
-    def __init__(self, g = 1.1, a = -0.5, t = 2.1, c_k = 0.5, c_l = 0.5,\
+    def __init__(self, g = 1.1, a = -0.5, t = 2.1, c_k = 0.4, c_l = 0.6,\
                  a_k = 0.7, a_l = 0.7, PE = 0, ):
         self.g = float(g)
         self.a = float(a)
@@ -19,9 +19,9 @@ class Agent(object):
         if PE == 0:
             self.PE = float(PE)
         elif PE > 0:
-            self.PE = float(0.01)
+            self.PE = float(0.02)
         else:
-            self.PE = float(-0.01)
+            self.PE = float(-0.02)
         '''
     Define the utility function.
     The output_lst consists of three arguments: g, k and l.

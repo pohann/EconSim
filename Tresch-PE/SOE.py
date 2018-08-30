@@ -8,7 +8,7 @@ Created on Sat Aug 18 17:55:59 2018
 
 
 class SOE(object):
-    def __init__(self, g = 1.1, a = -0.5, t = 2.1, c_k = 0.5, c_l = 0.5,\
+    def __init__(self, g = 1.1, a = -0.5, t = 2.1, c_k = 0.4, c_l = 0.6,\
                  a_k = 0.7, a_l = 0.7, PE = 0, ):
         self.g = float(g)
         self.a = float(a)
@@ -20,9 +20,9 @@ class SOE(object):
         if PE == 0:
             self.PE = float(PE)
         elif PE > 0:
-            self.PE = float(0.01)
+            self.PE = float(0.02)
         else:
-            self.PE = float(-0.01)
+            self.PE = float(-0.02)
     '''
     Sys_PE defines FOCs for the social planner.
     '''
