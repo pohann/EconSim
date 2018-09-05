@@ -7,8 +7,8 @@ Created on Sat Aug 18 18:31:55 2018
 import numpy as np
 
 class Agent(object):
-    def __init__(self, g = 1.1, a = -0.5, t = 2.1, c_k = 0.4, c_l = 0.6,\
-                 a_k = 0.7, a_l = 0.7, PE = 0, ):
+    def __init__(self, g = 1.1, a = 0.7, t = 2.1, c_k = 0.4, c_l = 0.6,\
+                 a_k = 0.3, a_l = 0.5, PE = 0, ):
         self.g = float(g)
         self.a = float(a)
         self.t = float(t)
@@ -19,9 +19,9 @@ class Agent(object):
         if PE == 0:
             self.PE = float(PE)
         elif PE > 0:
-            self.PE = float(0.02)
+            self.PE = float(0.2)
         else:
-            self.PE = float(-0.02)
+            self.PE = float(-0.2)
         '''
     Define the utility function.
     The output_lst consists of three arguments: g, k and l.
@@ -33,7 +33,7 @@ class Agent(object):
         x_1 = eq[0]
         k = eq[1]
         l = eq[2]
-        utility = (0.5*x_1**self.g)**((1-self.a)/self.g)-(self.c_k*(k**self.t)+\
+        utility = (x_1**self.g)**((1-self.a)/self.g)-(self.c_k*(k**self.t)+\
                    self.c_l*(l**self.t))/self.t
         return utility
     '''

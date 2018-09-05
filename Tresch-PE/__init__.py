@@ -41,8 +41,8 @@ class Tres(object):
     existence and uniqueness of solution, please carefully check for the 
     concavity of the objective function.
     '''
-    def __init__(self, g = 1.1, a = -0.7, t = 2.1, c_k = 0.4, c_l = 0.6,\
-                 a_k = 0.3, a_l = 0.5, PE = 0, ):
+    def __init__(self, g = 1.1, a = 0.7, t = 2.1, c_k = 0.4, c_l = 0.6,\
+                 a_k = 0.2, a_l = 0.6, PE = 0, ):
         self.g = float(g)
         self.a = float(a)
         self.t = float(t)
@@ -53,9 +53,9 @@ class Tres(object):
         if PE == 0:
             self.PE = float(PE)
         elif PE > 0:
-            self.PE = float(0.02)
+            self.PE = float(0.2)
         else:
-            self.PE = float(-0.02)
+            self.PE = float(-0.2)
     '''
     Solve for the Pareto optimum.
     
@@ -77,7 +77,7 @@ class Tres(object):
         ans[2] = y[1]
         ans[0] = a.Prod(ans)
 
-        for i in range(10):
+        for i in range(20):
             random.seed(datetime.datetime.now())
             x =  fsolve(sys.KL_PE, ((random.uniform(1,5),)*2))
             while x[0]< 1e-2 or x[1]< 1e-2:
@@ -90,12 +90,12 @@ class Tres(object):
             comp[1] = y[0]
             comp[2] = y[1]
             comp[0] = a.Prod(comp)
-            print a.IU(comp)
+            print a.Util(comp)
             if a.Util(ans) < a.Util(comp):
                 ans = comp
         print ans    
         print a.Util(ans)
-        print a.IU(ans)
+
     # a function to test wether equi found an maximum   
     def ckeck(self):
         random.seed(datetime.datetime.now())
@@ -174,12 +174,12 @@ class Tres(object):
             comp[1] = y[0]
             comp[2] = y[1]
             comp[0] = a.Prod(comp)
-            print a.IU(comp)
+            print a.Util(comp)
             if a.Util(ans) < a.Util(comp):
                 ans = comp
         print ans        
         print a.Util(ans)
-        print a.IU(ans)
+
     '''
     Pig is a callable function that returns
     1.
