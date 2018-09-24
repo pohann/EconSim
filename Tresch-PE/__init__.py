@@ -77,7 +77,7 @@ class Tres(object):
         ans[2] = y[1]
         ans[0] = a.Prod(ans)
 
-        for i in range(1000):
+        for i in range(100):
             random.seed(datetime.datetime.now())
             x =  fsolve(sys.KL_PE, ((random.uniform(1,5),)*2),xtol=1.49012e-10)
             while x[0]< 1e-2 or x[1]< 1e-2:
@@ -90,7 +90,7 @@ class Tres(object):
             comp[1] = y[0]
             comp[2] = y[1]
             comp[0] = a.Prod(comp)
-            #print a.Util(comp)
+            print comp
             if a.Util(ans) < a.Util(comp):
                 ans = comp
         print ans    

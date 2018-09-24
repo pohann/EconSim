@@ -45,16 +45,16 @@ class SOE(object):
     
     def KL(self, x):
         k,l = x
-        return(self.a_k*(1-self.a)*(self.a_k*(1-self.a)-1)*(k**2)**(self.a_k*(1-self.a)-1)\
+        return(self.a_k*(1-self.a)*(k**2)**(self.a_k*(1-self.a)-1)\
                *(l**2)**(self.a_l*(1-self.a))-self.c_k*(k**2)**(self.t-1),\
-               self.a_l*(1-self.a)*(self.a_l*(1-self.a)-1)*(k**2)**(self.a_k*(1-self.a))\
+               self.a_l*(1-self.a)*(k**2)**(self.a_k*(1-self.a))\
                *(l**2)**(self.a_l*(1-self.a)-1)-self.c_l*(l**2)**(self.t-1)
                )
     def KL_PE(self, x):
         k,l = x
-        return((self.a_k+self.PE)*(1-self.a)*((self.a_k+self.PE)*(1-self.a)-1)*(k**2)**((self.a_k+self.PE)*(1-self.a)-1)\
+        return((self.a_k+self.PE)*(1-self.a)*(k**2)**((self.a_k+self.PE)*(1-self.a)-1)\
                *(l**2)**(self.a_l*(1-self.a))-self.c_k*(k**2)**(self.t-1),\
-               self.a_l*(1-self.a)*(self.a_l*(1-self.a)-1)*(k**2)**((self.a_k+self.PE)*(1-self.a))\
+               self.a_l*(1-self.a)*(k**2)**((self.a_k+self.PE)*(1-self.a))\
                *(l**2)**(self.a_l*(1-self.a)-1)-self.c_l*(l**2)**(self.t-1)
                )
         
